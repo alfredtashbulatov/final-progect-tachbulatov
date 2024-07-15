@@ -8,18 +8,19 @@ import pytest
 from search_films import Search_films_and_TV_series
 import json
 from time import sleep
+import configparser
 
 @allure.title("Просмотр фильмов исериалов")
 @allure.description("Тест проверяет поиск фильма(сериала)")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH")
-def test_search_films():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
+def test_search_films(driver):
+    # with allure.step("Инициализировать браузер"):
+    #     browser = webdriver.Chrome()
 
     with allure.step("Передать браузер в конструктор класса\
                      Search_films_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.search_content(films="на автомате")
@@ -28,13 +29,13 @@ def test_search_films():
 @allure.description("Тест проверяет поиск фильма(сериала) при тустом поле ввода")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH ZERO DATA")
-def test_search_zero_data():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
+def test_search_zero_data(driver):
+    # with allure.step("Инициализировать браузер"):
+    #     browser = webdriver.Chrome()
 
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.search_content_zero_data(films="")
@@ -60,13 +61,13 @@ def test_only_numbers():
                     (сериала) по мимнимальной дате")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH MIN YEAR")
-def test_search_min_year():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
+def test_search_min_year(driver):
+    # with allure.step("Инициализировать браузер"):
+    #     browser = webdriver.Chrome()
 
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.search_content_by_min_years(year="1874")
@@ -77,13 +78,13 @@ def test_search_min_year():
                     (сериала) по мимнимальной дате")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH MAX YEAR")
-def test_search_max_year():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
+def test_search_max_year(driver):
+    # with allure.step("Инициализировать браузер"):
+    #     browser = webdriver.Chrome()
 
     with allure.step("Передать браузер в конструктор\
                      класса Searchfilms_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.search_content_by_max_years(year="2050")
@@ -95,13 +96,13 @@ def test_search_max_year():
                     (сериала) по некорректной дате")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH INCORRECT YEAR")
-def test_search_incorrect_year():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
+def test_search_incorrect_year(driver):
+    # with allure.step("Инициализировать браузер"):
+    #     browser = webdriver.Chrome()
 
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.input_incorrect_year(year="205")

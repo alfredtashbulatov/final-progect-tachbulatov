@@ -3,7 +3,7 @@ from selenium.webdriver.common import keys
 from time import sleep
 import allure
 import json
-
+import pytest
 
 class Search_films_and_TV_series:
 
@@ -18,6 +18,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Ввести в поле поиска название фильма"):
             self.browser.find_element(
@@ -46,6 +47,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Оставить поле ввода пустым"):
             self.browser.find_element(
@@ -68,6 +70,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Ввести только цифры"):
             self.browser.find_element(
@@ -85,6 +88,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(
@@ -106,6 +110,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(
@@ -127,6 +132,7 @@ class Search_films_and_TV_series:
             cookies = json.load(file)
             for cookie in cookies:
                 self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(
