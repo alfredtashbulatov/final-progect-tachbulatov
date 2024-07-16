@@ -1,7 +1,10 @@
 allure*
-config.ini
+config.ini*
 cookies.json
-auth.py
+auth.py*
+settings.json
+configProvaider.py
+cookies.json
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,visualstudiocode,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,visualstudiocode,pycharm
 

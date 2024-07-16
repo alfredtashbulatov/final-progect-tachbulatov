@@ -3,7 +3,7 @@ from selenium.webdriver.common import keys
 from time import sleep
 import allure
 import json
-import pytest
+
 
 class Search_films_and_TV_series:
 
@@ -11,14 +11,17 @@ class Search_films_and_TV_series:
         self.browser = browser
         self.browser.get("https://www.kinopoisk.ru/")
 
+    def add_cookie(self):
+        with open('cookies.json', 'r') as file:
+                cookies = json.load(file)
+                for cookie in cookies:
+                    self.browser.add_cookie(cookie)
+                self.browser.refresh()
+
     @allure.step("Поиск фильмов и сериалов")
     def search_content(self, films):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Ввести в поле поиска название фильма"):
             self.browser.find_element(
@@ -42,12 +45,8 @@ class Search_films_and_TV_series:
 
     @allure.step("Поиск с пустым полем ввода названия")
     def search_content_zero_data(self, films):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Оставить поле ввода пустым"):
             self.browser.find_element(
@@ -65,12 +64,8 @@ class Search_films_and_TV_series:
 
     @allure.step("Ввод в поле поиска только цифр")
     def input_only_numbers(self, films):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Ввести только цифры"):
             self.browser.find_element(
@@ -83,12 +78,8 @@ class Search_films_and_TV_series:
                     .send_keys(keys.Keys.ENTER)
 
     def search_content_by_min_years(self, year):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(
@@ -105,12 +96,8 @@ class Search_films_and_TV_series:
                     .click()
 
     def search_content_by_max_years(self, year):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(
@@ -127,12 +114,8 @@ class Search_films_and_TV_series:
                     .click()
 
     def input_incorrect_year(self, year):
-        # Загружаем куки для повторного входа
-        with open('cookies.json', 'r') as file:
-            cookies = json.load(file)
-            for cookie in cookies:
-                self.browser.add_cookie(cookie)
-            self.browser.refresh()
+        with allure.step("Загружаем куки для повторного входа"):
+            self.add_cookie()
 
         with allure.step("Перейти к фильтрам"):
             self.browser.find_element(

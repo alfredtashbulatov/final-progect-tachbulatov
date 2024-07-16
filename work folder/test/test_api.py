@@ -8,12 +8,12 @@ from user_api import Api
                      жанру с параметрами genre = криминал")
 @allure.feature("SEARCH BY GENRES")
 @allure.severity(allure.severity_level.BLOCKER)
-def test_api_search_by_genres(url: Api):
+def test_api_search_by_genres(api: Api):
     with allure.step("Задать значение параметру 'genre'"):
         genre = "криминал"
 
     with allure.step("Вызвать Api метод для поиска по жанрам"):
-        body = url.search_films_by_genres(genre)
+        body = api.search_films_by_genres(genre)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -27,12 +27,12 @@ def test_api_search_by_genres(url: Api):
                     с параметрами name = холоп")
 @allure.feature("SEARCH BY NAME")
 @allure.severity(allure.severity_level.BLOCKER)
-def test_api_search_by_name(url: Api):
+def test_api_search_by_name(api: Api):
     with allure.step("Задать значение параметру 'name'"):
         name = "холоп"
 
     with allure.step("Вызвать Api метод для поиска по названию"):
-        body = url.search_films_by_name(name)
+        body = api.search_films_by_name(name)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -46,13 +46,13 @@ def test_api_search_by_name(url: Api):
                     с параметром ageRating = 0")
 @allure.feature("SEARCH BY AGE-RATING")
 @allure.severity(allure.severity_level.BLOCKER)
-def test_search_films_by_ageRating(url: Api):
+def test_search_films_by_ageRating(api: Api):
     with allure.step("Задать значение параметру 'ageRating'"):
         ageRating = "0"
 
     with allure.step("Вызвать Api метод для поиска\
                      по возростному ограничению"):
-        body = url.search_films_by_ageRating(ageRating)
+        body = api.search_films_by_ageRating(ageRating)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -65,12 +65,12 @@ def test_search_films_by_ageRating(url: Api):
                     фильмов и сериалов с параметром top = top10")
 @allure.feature("SEARCH BY TOP-10")
 @allure.severity(allure.severity_level.BLOCKER)
-def test_search_top_10_films(url: Api):
+def test_search_top_10_films(api: Api):
     with allure.step("Задать значение параметру 'top'"):
         top = "top10"
 
     with allure.step("Вызвать Api метод для поиска ТОП-10 фильмов и сериалов"):
-        body = url.search_top_10_films(top)
+        body = api.search_top_10_films(top)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -83,13 +83,13 @@ def test_search_top_10_films(url: Api):
                     поиска фильмов и сериалов по ")
 @allure.feature("SEARCH BY RATED")
 @allure.severity(allure.severity_level.BLOCKER)
-def test_search_films_by_rated(url: Api):
+def test_search_films_by_rated(api: Api):
     with allure.step("Задать значение параметру 'rating_kp'"):
         rating_kp = "7.2-10"
 
     with allure.step("Вызвать Api метод для поиска\
                      фильмов и сериалов по рейтингу"):
-        body = url.search_films_by_rated(rating_kp)
+        body = api.search_films_by_rated(rating_kp)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -102,13 +102,13 @@ def test_search_films_by_rated(url: Api):
                     о годам с параметрами 'year=2000'")
 @allure.feature("SEARCH BY YEAR")
 @allure.severity(allure.severity_level.CRITICAL)
-def test_search_films_by_years(url: Api):
+def test_search_films_by_years(api: Api):
     with allure.step("Задать значение параметру 'rating_kp'"):
         year = "2000"
 
     with allure.step("Вызвать Api метод для\
                      поиска фильмов и сериалов по годам"):
-        body = url.search_films_by_years(year)
+        body = api.search_films_by_years(year)
 
     with allure.step("Выполнить проверки"):
         with allure.step("Проверить, что длина списка в\
@@ -122,13 +122,13 @@ def test_search_films_by_years(url: Api):
                     параметрами 'year=2100'")
 @allure.feature("SEARCH BY YEAR")
 @allure.severity(allure.severity_level.NORMAL)
-def test_search_films_by_big_years_nigative(url: Api):
+def test_search_films_by_big_years_nigative(api: Api):
     with allure.step("Задать значение парметру 'year'"):
         year = "2100"
 
     with allure.step("Вызвать Api метод для поиска фильмов и\
                      сериалов по годам большим допустимого значения"):
-        body = url.search_films_by_big_years_nigativ(year)
+        body = api.search_films_by_big_years_nigativ(year)
 
     with allure.step("Выполнить прповерки"):
         with allure.step("Проверить, что длина списка в\
@@ -149,13 +149,13 @@ def test_search_films_by_big_years_nigative(url: Api):
                     'year=1870'")
 @allure.feature("SEARCH BY YEAR")
 @allure.severity(allure.severity_level.NORMAL)
-def test_search_films_by_min_years_nigative(url: Api):
+def test_search_films_by_min_years_nigative(api: Api):
     with allure.step("Задать значение парметру 'year'"):
         year = "1870"
 
     with allure.step("Вызвать Api метод для поиска фильмов и сериалов\
                      по годам большим допустимого значения"):
-        body = url.search_films_by_min_years_nigativ(year)
+        body = api.search_films_by_min_years_nigativ(year)
 
     with allure.step("Выполнить прповерки"):
         with allure.step("Проверить, что длина списка в\
@@ -177,13 +177,13 @@ def test_search_films_by_min_years_nigative(url: Api):
                     с параметром rating_kp= -7")
 @allure.feature("SEARCH BY RATED")
 @allure.severity(allure.severity_level.NORMAL)
-def test_search_films_by_rated_nigative(url: Api):
+def test_search_films_by_rated_nigative(api: Api):
     with allure.step("Задать значение парметру 'rating_kp'"):
         rating_kp = "-7"
 
     with allure.step("Вызвать Api метод для поиска фильмов и сериалов\
                      по отрицательному рейтингу"):
-        body = url.search_films_by_rated_nigative(rating_kp)
+        body = api.search_films_by_rated_nigative(rating_kp)
 
     with allure.step("Выполнить прповерки"):
         with allure.step("Проверить, что длина списка в 'body'\
@@ -209,13 +209,13 @@ def test_search_films_by_rated_nigative(url: Api):
                     с параметрами ageRating=55")
 @allure.feature("SEARCH BY AGE-RATING")
 @allure.severity(allure.severity_level.NORMAL)
-def test_search_films_by_ageRating_nigative(url: Api):
+def test_search_films_by_ageRating_nigative(api: Api):
     with allure.step("Задать значение парметру 'ageRating'"):
         ageRating = "55"
 
     with allure.step("Вызвать Api метод для поиска фильмов и сериалов\
                      по неккоректному возростному ограничению"):
-        body = url.search_films_by_ageRating_nigative(ageRating)
+        body = api.search_films_by_ageRating_nigative(ageRating)
 
     with allure.step("Выполнить прповерки"):
         with allure.step("Проверить, что длина списка в\

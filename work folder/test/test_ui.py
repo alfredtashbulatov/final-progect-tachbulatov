@@ -1,23 +1,13 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common import keys
-from selenium.webdriver.support.ui import WebDriverWait
-from  selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
 import allure
-import pytest
-from search_films import Search_films_and_TV_series
-import json
 from time import sleep
-import configparser
+
+from search_films import Search_films_and_TV_series
 
 @allure.title("Просмотр фильмов исериалов")
 @allure.description("Тест проверяет поиск фильма(сериала)")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH")
 def test_search_films(driver):
-    # with allure.step("Инициализировать браузер"):
-    #     browser = webdriver.Chrome()
-
     with allure.step("Передать браузер в конструктор класса\
                      Search_films_and_TV_series"):
         search = Search_films_and_TV_series(driver)
@@ -30,9 +20,6 @@ def test_search_films(driver):
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH ZERO DATA")
 def test_search_zero_data(driver):
-    # with allure.step("Инициализировать браузер"):
-    #     browser = webdriver.Chrome()
-
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
         search = Search_films_and_TV_series(driver)
@@ -45,12 +32,9 @@ def test_search_zero_data(driver):
 @allure.description("Тест проверяет поиск фильма(сериала), при вводе в поле поиска только цифр")
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH ONLY NUMBERS")
-def test_only_numbers():
-    with allure.step("Инициализировать браузер"):
-        browser = webdriver.Chrome()
-
+def test_only_numbers(driver):
     with allure.step("Передать браузер в конструктор класса Search_films_and_TV_series"):
-        search = Search_films_and_TV_series(browser)
+        search = Search_films_and_TV_series(driver)
 
     with allure.step("Вызвать метод для поиска"):
         search.input_only_numbers(films="547368769")
@@ -62,9 +46,6 @@ def test_only_numbers():
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH MIN YEAR")
 def test_search_min_year(driver):
-    # with allure.step("Инициализировать браузер"):
-    #     browser = webdriver.Chrome()
-
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
         search = Search_films_and_TV_series(driver)
@@ -79,9 +60,6 @@ def test_search_min_year(driver):
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH MAX YEAR")
 def test_search_max_year(driver):
-    # with allure.step("Инициализировать браузер"):
-    #     browser = webdriver.Chrome()
-
     with allure.step("Передать браузер в конструктор\
                      класса Searchfilms_and_TV_series"):
         search = Search_films_and_TV_series(driver)
@@ -97,9 +75,6 @@ def test_search_max_year(driver):
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("SEARCH INCORRECT YEAR")
 def test_search_incorrect_year(driver):
-    # with allure.step("Инициализировать браузер"):
-    #     browser = webdriver.Chrome()
-
     with allure.step("Передать браузер в конструктор\
                      класса Search_films_and_TV_series"):
         search = Search_films_and_TV_series(driver)
