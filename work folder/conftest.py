@@ -17,7 +17,3 @@ def driver():
 def api():
     return Api("https://api.kinopoisk.dev")
 
-
-@pytest.fixture(scope="session")
-def token():
-    return Api("Z2QZF5T-P1CMYXF-PSA0BPH-9XRJ91D")
