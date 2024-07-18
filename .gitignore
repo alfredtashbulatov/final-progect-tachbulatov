@@ -1,4 +1,5 @@
 allure*
+/.vscode/
 config.ini*
 auth.py*
 settings.json
