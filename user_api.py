@@ -1,3 +1,4 @@
+import pytest
 import requests
 import allure
 
@@ -85,3 +86,23 @@ class Api():
                            + str(year), headers=self.token
                            )
         return res.json()
+
+
+@pytest.mark.api_test
+@allure.title("Поиск фильмов и серилов по названию")
+@allure.description("Тест вызывает Api метод для поиска\
+                    фильмов и сериалов по названию\
+                    с параметрами name = холоп")
+@allure.feature("SEARCH BY NAME")
+@allure.severity(allure.severity_level.BLOCKER)
+def test_api_search_by_name(api: Api):
+    with allure.step("Задать значение параметру 'name'"):
+        name = "холоп"
+
+    with allure.step("Вызвать Api метод для поиска по названию"):
+        body = api.search_films_by_name(name)
+
+    with allure.step("Выполнить проверки"):
+        with allure.step("Проверить, что длина списка в\
+                         'body' больше чем '0'"):
+            assert len(body) > 0

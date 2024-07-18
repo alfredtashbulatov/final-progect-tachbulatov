@@ -13,10 +13,10 @@ class Search_films_and_TV_series:
 
     def add_cookie(self):
         with open('cookies.json', 'r') as file:
-                cookies = json.load(file)
-                for cookie in cookies:
-                    self.browser.add_cookie(cookie)
-                self.browser.refresh()
+            cookies = json.load(file)
+            for cookie in cookies:
+                self.browser.add_cookie(cookie)
+            self.browser.refresh()
 
     @allure.step("Поиск фильмов и сериалов")
     def search_content(self, films):

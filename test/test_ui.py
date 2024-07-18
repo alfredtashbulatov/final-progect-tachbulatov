@@ -1,6 +1,6 @@
+from time import sleep
 import allure
 import pytest
-from time import sleep
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from search_films import Search_films_and_TV_series as SF
