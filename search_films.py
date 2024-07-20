@@ -1,6 +1,6 @@
+from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common import keys
-from time import sleep
 import allure
 import json
 
